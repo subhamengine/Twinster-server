@@ -71,3 +71,15 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const updatedPost = await Post.findByIdAndDelete(id);
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+
+
+}
